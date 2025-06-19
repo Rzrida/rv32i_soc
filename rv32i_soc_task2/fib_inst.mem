@@ -1,0 +1,14 @@
+00000293  // addi x5, x0, 0        ; a = 0
+00100313  // addi x6, x0, 1        ; b = 1
+200001B7  // lui x3, 0x20000       ; x3 = 0x20000000
+10818113  // addi x2, x3, 0x108    ; x2 = 0x20000108
+FFF00213  // addi x4, x0, -1       ; x4 = 0xFFFFFFFF
+00412023  // sw x4, 0(x2)          ; enable output
+10418113  // addi x2, x3, 0x104    ; x2 = 0x20000104 (GPIO data)
+00512023  // sw x5, 0(x2)          ; output a
+00628F33  // add x30, x5, x6       ; sum = a + b
+00030293  // addi x5, x6, 0        ; a = b
+000F0313  // addi x6, x30, 0       ; b = sum
+FF1FF06F  // jal x0, -16           ; jump back to output (infinite loop)
+00000013  // nop
+00000013  // nop
